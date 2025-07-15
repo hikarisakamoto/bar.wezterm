@@ -38,6 +38,7 @@ local config = require "bar.config"
 local tabs = require "bar.tabs"
 local user = require "bar.user"
 local spotify = require "bar.spotify"
+local mode = require "bar.mode"
 local paths = require "bar.paths"
 
 ---conforming to https://github.com/wez/wezterm/commit/e4ae8a844d8feaa43e1de34c5cc8b4f07ce525dd
@@ -126,6 +127,14 @@ wez.on("update-status", function(window, pane)
   }
 
   table.insert(left_cells, { Text = string.rep(" ", options.padding.left) })
+
+  if options.modules.mode.enabled then
+    local active = mode.get_mode(window)
+    if #active > 0 then
+      table.insert(left_cells, { Foreground = { Color = palette.ansi[options.modules.mode.color] } })
+      table.insert(left_cells, { Text = options.modules.mode.icon .. utilities._space(active, options.separator.space) })
+    end
+  end
 
   if options.modules.workspace.enabled then
     local stat = options.modules.workspace.icon .. utilities._space(window:active_workspace(), options.separator.space)
