@@ -77,8 +77,8 @@ M.options = {
     },
     mode = {
       enabled = true, 
-      icon = wez.nerdfonts.cod_server_process, -- TODO: replace with a more suitable icon
-      color = 1,
+      icon = wez.nerdfonts.cod_server_process,
+      color = 2,
     },
     workspace = {
       enabled = true,
