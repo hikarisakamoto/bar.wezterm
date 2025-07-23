@@ -4,14 +4,11 @@ local M = {}
 ---@param window table
 ---@return string
 M.get_mode = function(window)
-  local key_table = window:active_key_table()
-  if not key_table then
-    return ""
-  end
-  if key_table == "copy_mode" then
-    return "copy"
-  end
-  return key_table
+    local key_table = window:active_key_table()
+    if key_table == nil or not key_table:find("_mode$") then
+        return "normal_mode"
+    end
+    return key_table
 end
 
 return M
