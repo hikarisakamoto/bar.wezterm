@@ -132,8 +132,8 @@ wez.on("update-status", function(window, pane)
 if options.modules.mode.enabled then
  local active = mode.get_mode(window)
     if #active > 0 then
-      table.insert(left_cells, mode.get_mode_table(active))
-      -- table.insert(left_cells, { Text =options.modules.mode.icon .. utilities._space(active, options.separator.space) })
+      table.insert(left_cells, { Foreground = { Color = palette.ansi[options.modules.mode.color] } })
+      table.insert(left_cells, { Text =options.modules.mode.icon .. utilities._space(active, options.separator.space) })
     end
 end
 
