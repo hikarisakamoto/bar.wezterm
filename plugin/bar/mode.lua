@@ -39,6 +39,12 @@ M.get_background = function(mode, palette, utilities, options)
 end
 
 M.get_text = function(mode, palette, utilities, options)
+    local text = mode:gsub("_mode", "")
+    text = text:upper()
+
+    return {
+        Text = options.modules.mode.icon .. utilities._space(text, options.separator.space)
+    }
 end
 
 return M
