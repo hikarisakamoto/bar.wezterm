@@ -18,7 +18,7 @@ M.get_foreground_color = function(mode, palette)
     return palette.ansi[2]
 end
 
-M.get_style = function(mode, palette, utilities, options)
+M.get_foreground = function(mode, palette, utilities, options)
     if mode == "normal_mode" then
         return {
             Foreground = {
@@ -33,6 +33,12 @@ M.get_style = function(mode, palette, utilities, options)
         }
     }
 
+end
+
+M.get_background = function(mode, palette, utilities, options)
+end
+
+M.get_text = function(mode, palette, utilities, options)
 end
 
 return M
