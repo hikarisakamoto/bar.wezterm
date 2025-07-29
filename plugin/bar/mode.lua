@@ -20,22 +20,18 @@ end
 
 M.get_style = function(mode, palette, utilities, options)
     if mode == "normal_mode" then
-        return {{
+        return {
             Foreground = {
                 Color = palette.ansi[5]
             }
-        }, {
-            Text = options.modules.mode.icon .. utilities._space(mode, options.separator.space)
-        }}
+        }
     end
 
-    return {{
+    return {
         Foreground = {
             Color = palette.ansi[2]
         }
-    }, {
-        Text = options.modules.mode.icon .. utilities._space(mode, options.separator.space)
-    }}
+    }
 
 end
 
