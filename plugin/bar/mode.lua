@@ -11,8 +11,11 @@ M.get_mode = function(window)
     return key_table
 end
 
-
-M.get_mode_table= function(mode)
-    
+M.get_foreground_color = function(mode, palette)
+    if mode == "normal_mode" then
+        return palette.ansi[5]
+    end
+    return palette.ansi[2]
 end
+
 return M
