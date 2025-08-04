@@ -88,4 +88,21 @@ H._constant_width = function(prev, next)
   return H._space(next, first_half, second_half)
 end
 
+--- Create a cell used with `wezterm.format` to display a string
+---@param fg any|nil Color of the foreground
+---@param text string Text for the cell
+---@param bg any|nil Color of the background
+---@return table
+function H._cell(fg, text, bg)
+    local cell = { Text = text }
+    if fg ~= nil then 
+      cell.Foreground = { Color = fg }
+    end
+    if bg ~= nil then
+      cell.Background = { Color = bg }
+    end
+    return cell
+end
+ 
+
 return H
