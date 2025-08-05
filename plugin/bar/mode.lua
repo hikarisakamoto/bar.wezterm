@@ -20,7 +20,7 @@ end
 
 M.get_background_color  = function(mode, palette)
     if mode == "normal_mode" then
-        return palette.tab_bar.background
+        return palette.ansi[0]
     end
     return palette.ansi[15]
 end
