@@ -134,7 +134,7 @@ if options.modules.mode.enabled then
     if #active > 0 then
       table.insert(left_cells, { Foreground = { Color = mode.get_foreground_color(active, palette) } })
       table.insert(left_cells, { Text = mode.get_text(active, utilities, options) })
-      -- table.insert(left_cells, { Background = { Color = mode.get_background_color(active, palette) } })
+      table.insert(left_cells, { Background = { Color = mode.get_background_color(active, palette) } })
     end
 end
 
