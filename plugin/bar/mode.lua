@@ -18,16 +18,11 @@ M.get_foreground_color = function(mode, palette)
     return palette.ansi[2]
 end
 
-M.get_foreground = function(mode, palette)
+M.get_background_color  = function(mode, palette, utilities, options)
     if mode == "normal_mode" then
-        return palette.ansi[5]
-      
+        return palette.tab_bar.background
     end
-
-    return palette.ansi[2]
-end
-
-M.get_background = function(mode, palette, utilities, options)
+    return palette.ansi[15]
 end
 
 M.get_text = function(mode, utilities, options)

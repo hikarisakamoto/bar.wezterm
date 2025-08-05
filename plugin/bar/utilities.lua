@@ -88,20 +88,4 @@ H._constant_width = function(prev, next)
   return H._space(next, first_half, second_half)
 end
 
----returns a styled cell with optional foreground and background colors
----@param fg string?
----@param text string
----@param bg string?
----@return table
-H._cell = function(fg, text, bg)
-  local cell = { Text = text }
-  if fg then
-    cell.Foreground = { Color = fg }
-  end
-  if bg then
-    cell.Background = { Color = bg }
-  end
-  return cell
-end
-
 return H
