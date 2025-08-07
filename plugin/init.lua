@@ -129,14 +129,17 @@ wez.on("update-status", function(window, pane)
   table.insert(left_cells, { Text = string.rep(" ", options.padding.left) })
 
   -- mode
-if options.modules.mode.enabled then
- local active = mode.get_mode(window)
+  if options.modules.mode.enabled then
+    local active = mode.get_mode(window)
     if #active > 0 then
-      -- table.insert(left_cells, { Background = { Color = mode.get_background_color(active, palette) } })
-      table.insert(left_cells, { Foreground = { Color = mode.get_foreground_color(active, palette) } })
+      local bg = mode.get_background_color(active, palette)
+      local fg = mode.get_foreground_color(active, palette)
+      table.insert(left_cells, { Background = { Color = bg } })
+      table.insert(left_cells, { Foreground = { Color = fg } })
       table.insert(left_cells, { Text = mode.get_text(active, utilities, options) })
+      table.insert(left_cells, { Background = { Color = palette.tab_bar.background } })
     end
-end
+  end
 
   if options.modules.workspace.enabled then
     local stat = options.modules.workspace.icon .. utilities._space(window:active_workspace(), options.separator.space)
