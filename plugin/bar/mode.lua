@@ -25,7 +25,7 @@ end
 M.get_background_color = function(mode, palette)
     if mode == "normal_mode" then
         -- return palette.tab_bar.background or palette.background or "transparent"
-        return palette.ansi[6]
+        return palette.ansi[0]
     elseif mode == "copy_mode" then
         return palette.ansi[11]
     elseif mode == "select_mode" then
