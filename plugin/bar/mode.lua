@@ -37,7 +37,8 @@ M.get_text = function(mode, utilities, options)
     local text = mode:gsub("_mode", "")
     text = text:upper()
 
-    return options.modules.mode.icon .. utilities._space(text, options.separator.space, 0)
+    -- return options.modules.mode.icon .. utilities._space(text, options.separator.space, 0)
+    return options.modules.mode.icon .. " " .. text
 end
 
 return M
