@@ -138,7 +138,6 @@ wez.on("update-status", function(window, pane)
       table.insert(left_cells, { Foreground = { Color = fg } })
       table.insert(left_cells, { Text = mode.get_text(active, utilities, options) })
       table.insert(left_cells, { Background = { Color = palette.tab_bar.background } })
-      table.insert(left_cells, { Text = string.rep(" ", options.separator.space) })
     end
   end
 
