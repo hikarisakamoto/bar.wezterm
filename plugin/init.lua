@@ -161,17 +161,15 @@ wez.on("update-status", function(window, pane)
 
   if options.modules.pane.enabled then
     local process = pane:get_foreground_process_name()
-    if not process then
-      goto set_left_status
+    if process then
+      table.insert(left_cells, { Foreground = { Color = palette.ansi[options.modules.pane.color] } })
+      table.insert(
+        left_cells,
+        { Text = options.modules.pane.icon .. utilities._space(utilities._basename(process), options.separator.space) }
+      )
     end
-    table.insert(left_cells, { Foreground = { Color = palette.ansi[options.modules.pane.color] } })
-    table.insert(
-      left_cells,
-      { Text = options.modules.pane.icon .. utilities._space(utilities._basename(process), options.separator.space) }
-    )
   end
 
-  ::set_left_status::
   window:set_left_status(wez.format(left_cells))
 
   -- right status
@@ -215,21 +213,22 @@ wez.on("update-status", function(window, pane)
   for _, callback in ipairs(callbacks) do
     local name = callback.name
     local func = callback.func
-    if not options.modules[name].enabled then
-      goto continue
+    if options.modules[name].enabled then
+      local text = func()
+      if #text > 0 then
+        table.insert(right_cells, { Foreground = { Color = palette.ansi[options.modules[name].color] } })
+        table.insert(right_cells, { Text = text })
+        table.insert(right_cells, { Foreground = { Color = palette.brights[1] } })
+        table.insert(right_cells, {
+          Text = utilities._space(options.separator.right_icon, options.separator.space, nil)
+            .. options.modules[name].icon,
+        })
+        table.insert(
+          right_cells,
+          { Text = utilities._space(options.separator.field_icon, options.separator.space, nil) }
+        )
+      end
     end
-    local text = func()
-    if #text > 0 then
-      table.insert(right_cells, { Foreground = { Color = palette.ansi[options.modules[name].color] } })
-      table.insert(right_cells, { Text = text })
-      table.insert(right_cells, { Foreground = { Color = palette.brights[1] } })
-      table.insert(right_cells, {
-        Text = utilities._space(options.separator.right_icon, options.separator.space, nil)
-          .. options.modules[name].icon,
-      })
-      table.insert(right_cells, { Text = utilities._space(options.separator.field_icon, options.separator.space, nil) })
-    end
-    ::continue::
   end
   -- remove trailing separator
   table.remove(right_cells, #right_cells)
