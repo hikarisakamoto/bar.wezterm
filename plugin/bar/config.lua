@@ -20,6 +20,24 @@ local M = {}
 ---@field icon string
 ---@field color number
 
+---@class option.mode.icons
+---@field normal_mode string
+---@field copy_mode string
+---@field search_mode string
+---@field default string
+
+---@class option.mode.colors
+---@field normal_mode number
+---@field copy_mode number
+---@field select_mode number
+---@field search_mode number
+---@field default number
+
+---@class option.mode
+---@field enabled boolean
+---@field icons option.mode.icons
+---@field colors option.mode.colors
+
 ---@class option.spotify : option.module
 ---@field max_width number
 ---@field throttle number
@@ -29,7 +47,7 @@ local M = {}
 
 ---@class option.modules
 ---@field tabs option.tabs
----@field mode option.module
+---@field mode option.mode
 ---@field workspace option.module
 ---@field leader option.module
 ---@field pane option.module
@@ -76,9 +94,20 @@ M.options = {
       new_tab_fg = 2,
     },
     mode = {
-      enabled = true, 
-      icon = wez.nerdfonts.cod_server_process,
-      color = 2,
+      enabled = true,
+      icons = {
+        normal_mode = wez.nerdfonts.cod_screen_normal,
+        copy_mode = wez.nerdfonts.cod_copy,
+        search_mode = wez.nerdfonts.cod_search,
+        default = wez.nerdfonts.cod_server_process,
+      },
+      colors = {
+        normal_mode = 5,
+        copy_mode = 7,
+        select_mode = 8,
+        search_mode = 2,
+        default = 2,
+      },
     },
     workspace = {
       enabled = true,

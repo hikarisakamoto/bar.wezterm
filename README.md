@@ -90,8 +90,19 @@ local config = {
     },
     mode = {
       enabled = true,
-      icon = wez.nerdfonts.cod_server_process, --- TODO: don't forget here as well
-      color = 1,
+      icons = {
+        normal_mode = wez.nerdfonts.cod_screen_normal,
+        copy_mode = wez.nerdfonts.cod_copy,
+        search_mode = wez.nerdfonts.cod_search,
+        default = wez.nerdfonts.cod_server_process,
+      },
+      colors = {
+        normal_mode = 5,
+        copy_mode = 7,
+        select_mode = 8,
+        search_mode = 2,
+        default = 2,
+      },
     },
     workspace = {
       enabled = true,
