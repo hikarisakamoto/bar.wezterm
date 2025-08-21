@@ -1,5 +1,6 @@
 local wez = require "wezterm"
 local utilities = require "bar.utilities"
+local process_icons = require "bar.process_icons"
 
 ---@private
 ---@class bar.config
@@ -19,6 +20,9 @@ local M = {}
 ---@field enabled boolean
 ---@field icon string
 ---@field color number
+
+---@class option.pane : option.module
+---@field process_to_icon table<string, string>
 
 ---@class option.mode.icons
 ---@field normal_mode string
@@ -50,7 +54,7 @@ local M = {}
 ---@field mode option.mode
 ---@field workspace option.module
 ---@field leader option.module
----@field pane option.module
+---@field pane option.pane
 ---@field username option.module
 ---@field hostname option.module
 ---@field clock option.clock
@@ -128,6 +132,7 @@ M.options = {
       enabled = true,
       icon = wez.nerdfonts.cod_multiple_windows,
       color = 7,
+      process_to_icon = process_icons,
     },
     username = {
       enabled = true,

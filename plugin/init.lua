@@ -162,11 +162,17 @@ wez.on("update-status", function(window, pane)
   if options.modules.pane.enabled then
     local process = pane:get_foreground_process_name()
     if process then
-      table.insert(left_cells, { Foreground = { Color = palette.ansi[options.modules.pane.color] } })
-      table.insert(
-        left_cells,
-        { Text = options.modules.pane.icon .. utilities._space(utilities._basename(process), options.separator.space) }
-      )
+      local name_with_ext = process:match "([^/\\]+)$"
+      local name = utilities._basename(process)
+      if name_with_ext and name then
+        local icon_map = options.modules.pane.process_to_icon or {}
+        local icon = icon_map[name:lower()]
+          or icon_map[name_with_ext:lower()]
+          or icon_map.default
+          or options.modules.pane.icon
+        table.insert(left_cells, { Foreground = { Color = palette.ansi[options.modules.pane.color] } })
+        table.insert(left_cells, { Text = icon .. utilities._space(name, options.separator.space) })
+      end
     end
   end
 
