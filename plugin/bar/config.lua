@@ -15,6 +15,7 @@ local M = {}
 ---@class option.tabs
 ---@field active_tab_fg number
 ---@field inactive_tab_fg number
+---@field new_tab_fg number
 
 ---@class option.module
 ---@field enabled boolean
