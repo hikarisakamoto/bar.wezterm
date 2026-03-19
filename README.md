@@ -126,7 +126,7 @@ local config = {
       enabled = true,
       icon = wez.nerdfonts.cod_multiple_windows,
       color = 7,
-      process_to_icon = require("bar.process_icons"), -- see plugin/bar/process_icons.lua for defaults
+      process_to_icon = require "bar.process_icons", -- see plugin/bar/process_icons.lua for defaults
     },
     username = {
       enabled = true,

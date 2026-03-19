@@ -1,6 +1,7 @@
 local wez = require "wezterm"
 
----@class bar.process_icons
+---@private
+---@class bar.process_icons : table<string, string>
 local M = {
   air = wez.nerdfonts.md_language_go,
   apt = wez.nerdfonts.dev_debian,
